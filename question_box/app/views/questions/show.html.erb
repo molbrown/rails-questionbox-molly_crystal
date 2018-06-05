@@ -10,5 +10,23 @@
   <%= @question.body %>
 </p>
 
+ <h2>Answer</h2>
+<%= link_to 'Add an answer', new_answer_path(question_id: @question.id) %>
+
+<% @question.answers.each do |answer|%>
+    <div>
+
+        <strong><%= answer.user %></strong>
+        <p><%= answer.text%></p>
+        <% if current_user && current_user.id == answer.user_id %>
+        <%= link_to 'Edit comment', edit_answer_path(question_id: @question.id)%> |
+        <%= link_to 'Delete Comment', answer_path(answer),
+               method: :delete %>
+        <% end %>
+</p>
+    </div>
+<% end %>
+
+
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
