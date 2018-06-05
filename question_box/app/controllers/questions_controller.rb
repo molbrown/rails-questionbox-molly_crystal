@@ -14,7 +14,11 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
+    if current_user
+      @question = Question.new
+    else
+      redirect_to new_login_path, alert: "Please log in first."
+    end
   end
 
   # GET /questions/1/edit
