@@ -14,12 +14,16 @@
  */
 
 @import "bootstrap";
-@import url("https://fonts.googleapis.com/css?family=Merriweather+Sans|Roboto");
+@import url("https://fonts.googleapis.com/css?family=Lato|Roboto|Sunflower:300");
 
 body {
     font-family: 'Roboto', sans-serif;
 }
 
-h1, h2 {
-    font-family: 'Merriweather Sans', sans-serif;
+h2, h3 {
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    font-family: 'Sunflower', sans-serif;
 }
