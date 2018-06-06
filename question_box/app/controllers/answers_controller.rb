@@ -24,17 +24,13 @@ class AnswersController < ApplicationController
 
     def edit
         @answer = Answer.find(params[:id])
-        if current_user.id == @answer.user_id
-            @question = Question.find(params[:question_id])
-        else
-            redirect_to question_path(@answer.post_id), alert: 'Only answer creator can edit.'
-        end
+        @question = Question.find(params[:question_id])
     end
 
     def update
         @answer = Answer.find(params[:id])
-        if @answer.save
-            redirect_to question_path(@answer.post_id)
+        if @answer.update_attributes(answer_params)
+            redirect_to question_path(@answer.question_id)
         else
             render 'new'
         end
@@ -53,6 +49,6 @@ class AnswersController < ApplicationController
 
     private
     def answer_params
-        params.require(:answer).permit(:question_id, :text, :user_id)
+        params.require(:answer).permit(:question_id, :text, :user_id, :valid_answer)
     end
 end
