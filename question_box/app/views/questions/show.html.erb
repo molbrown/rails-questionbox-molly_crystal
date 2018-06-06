@@ -8,6 +8,8 @@
   <%= markdown(@question.body) %>
 </p>
 
+<h3>Asked by<%= @user %></h3>
+
 
 <% if current_user && current_user.admin %>
   <%= link_to 'Edit', edit_question_path(@question), class:'btn btn-outline-dark btn-sm' %> |
