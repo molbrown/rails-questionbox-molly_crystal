@@ -9,7 +9,7 @@
         <div class='card my-3'>
             <div class='card-body' style='background-color: rgba(207, 219, 213, 0.6);'>
                 <h5 class="card-title" style='font-size: 1.4rem;'><%= link_to q.title, question_path(q), class:'text-dark' %></h5>
-                <%= truncate markdown(q.body), length: 100 %>
+                <%= truncate markdown(q.body), length: 100, escape: false %>
                 <%= link_to 'read more', question_path(q) %>
                 <p class='card-text'> Posted by <%= link_to q.user, user_path(q.user) %></p>
                 <p class='card-text mt-3'><%= pluralize(q.answers.count, "Answer") %></p>
