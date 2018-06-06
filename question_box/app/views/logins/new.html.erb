@@ -1,4 +1,5 @@
-<h1 class='my-3' style='font-size: 1.8rem;'>Log in to your Account:</h1>
+<div class='container'>
+<h2 class='my-3' style='font-size: 1.8rem;'>Log in to your Account:</h2>
 
 <%= form_tag login_url do %>
   <div class="form-group">
@@ -11,5 +12,6 @@
     <%= password_field_tag :password %>
   </div>
 
-  <button class='btn text-light', style='background-color: #137547;' type="submit">Log in</button>
+  <button class='btn text-dark', style='background-color: rgb(245, 203, 92);' type="submit">Log in</button>
 <% end %>
+</div>
