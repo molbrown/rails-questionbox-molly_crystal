@@ -1,7 +1,7 @@
 <div class='container'>
 <h2><%= current_user %>'s Questions</h2>
 
-
+<div class='my-3'><%= paginate @myquestions %></div>
 <% @myquestions.each do |q| %>
         <div class='card my-3'>
             <div class='card-body' style='background-color: rgba(207, 219, 213, 0.6);'>

@@ -14,12 +14,12 @@ class UsersController < ApplicationController
     end
 
     def index 
-        @myquestions = current_user.questions.all
+        @myquestions = current_user.questions.all.page params[:page]
     end
     
     def show
         @user = User.find(params[:id])
-        @questions = @user.questions.all
+        @questions = @user.questions.all.page params[:page]
     end
 
     private
