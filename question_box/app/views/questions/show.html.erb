@@ -8,9 +8,13 @@
   <%= markdown(@question.body) %>
 </p>
 
-<h3>Asked by<%= @user %></h3>
+<div>
+  <h4>Asked by <%= @question.user %></h4>
+ <%= image_tag @question.user.image, class:'img-thumbnail' if @question.user.image.attached?%>
+</div>
 
-
+<br>
+<div>
 <% if current_user && current_user.admin %>
   <%= link_to 'Edit', edit_question_path(@question), class:'btn btn-outline-dark btn-sm' %> |
     <%= link_to 'Delete', @question, method: :delete, class:'btn btn-outline-dark btn-sm' %>
@@ -18,6 +22,7 @@
 <% if current_user && current_user.id == @question.user_id %>
   <%= link_to 'Delete', @question, method: :delete, class:'btn btn-outline-dark btn-sm' %>
 <% end %><br>
+</div>
                     
  <h3 class='mt-5'>Answers:</h3>
 <%= link_to 'Add an answer', new_answer_path(question_id: @question.id), class:'btn text-dark', style:'background-color: rgb(245, 203, 92);' %>
