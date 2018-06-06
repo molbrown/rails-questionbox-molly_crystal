@@ -10,25 +10,31 @@
   </head>
 
   <body>
-    <div class="container">
+    
+      <div style='background-color: rgb(51, 53, 51);'>
       <% if current_user %>
-        <div class="text-right my-4">
-          Logged in as <strong><%= current_user %></strong>  |  
-          <%= link_to 'View my Questions', users_path, class:'btn btn-sm'%>  |  
-          <%= link_to "Log out", logout_path, class:'btn btn-sm' %>
+        <div class="text-right p-4" style='color: rgb(245, 203, 92);'>
+          Logged in as <strong class='mx-2' style='font-size: 1.2rem;'><%= current_user %></strong>  |  
+          <%= link_to 'View my Questions', users_path, class:'btn text-dark btn-sm mx-2', style:'background-color: rgb(245, 203, 92);'%>  |  
+          <%= link_to "Log out", logout_path, class:'btn text-dark btn-sm mx-2', style:'background-color: rgb(245, 203, 92);' %>
         </div>
       <% else %>
-        <div class="text-right my-4">
-          <%= link_to "Log in", new_login_path, class:'btn btn-sm' %>  |  
-          <%= link_to "Register New User", new_user_path, class:'btn btn-sm' %>
+        <div class="text-right p-4" style='color: rgb(245, 203, 92);'>
+          <%= link_to "Log in", new_login_path, class:'btn text-dark btn-sm mx-2', style:'background-color: rgb(245, 203, 92);' %>  |  
+          <%= link_to "Register New User", new_user_path, class:'btn text-dark btn-sm mx-2', style:'background-color: rgb(245, 203, 92);' %>
         </div>
       <% end %>
 
+
+      <h1><%= link_to 'code{interview}', questions_path, style: 'color: rgb(245, 203, 92);' %></h1>
+      
       <% flash.each do |name, msg| -%>
         <%= content_tag :div, msg, class: flash_classes(name) %>
       <% end %>
+      </div>
 
-
+    
     <%= yield %>
+   
   </body>
 </html>

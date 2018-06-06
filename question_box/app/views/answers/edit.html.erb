@@ -1,3 +1,4 @@
+<div class='container'>
 <%= form_for(@answer) do |form| %>
     <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.hidden_field :question_id, value: @question.id %>
@@ -11,3 +12,4 @@
   </p>
  
 <% end %>
+</div>
