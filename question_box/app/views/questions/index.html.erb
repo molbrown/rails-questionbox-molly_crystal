@@ -4,7 +4,7 @@
 
 <%= link_to 'New Question', new_question_path, class:'btn text-dark', style:'background-color: rgb(245, 203, 92);' %>
 
-
+<div class='my-3'><%= paginate @questions %></div>
 <% @questions.each do |q| %>
         <div class='card my-3'>
             <div class='card-body' style='background-color: rgba(207, 219, 213, 0.6);'>
