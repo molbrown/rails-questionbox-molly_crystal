@@ -1,3 +1,4 @@
+<div class='container'>
 <h1>Answer the Question</h1>
 
 <%= form_for(@answer) do |form| %>
@@ -7,9 +8,7 @@
         <%= form.label :text %><br>
         <%= form.text_area :text %>
     </div>
-
-  <p>
-    <%= form.submit %>
-  </p>
+    <button class='btn text-dark', style='background-color: rgb(245, 203, 92);' type="submit">Submit Answer</button>
  
 <% end %>
+</div>
