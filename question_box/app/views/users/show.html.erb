@@ -1,5 +1,6 @@
 <div class='container'>
 <h2><%= @user %>'s Questions</h2>
+<%= image_tag @user.image if @user.image.attached? %>
 
 <div class='my-3'><%= paginate @questions %></div>
 <% @questions.each do |q| %>
