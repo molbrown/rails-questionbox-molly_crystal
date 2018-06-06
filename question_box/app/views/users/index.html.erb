@@ -1,0 +1,20 @@
+<h1><%= current_user %>'s Questions</h1>
+
+<% @myquestions.each do |q| %>
+   
+        <div class='card col-11 rounded-0 p-0 border-0'>
+            <div class="card-header rounded-0" ><%= link_to q.title, question_path(q), class:'text-dark' %></div>
+            <div class='card-body' >
+                <h4 class='card-subtitle'>
+                <%= "Posted by #{q.user}"%></h4>
+                <%= q.body %>
+                <p class='card-text mt-3 font-weight-bold'><%= pluralize(q.answers.count, "Answer") %></p>
+            </div>
+            <% if q.updated_at %>
+                <div class="card-footer rounded-0"> Updated <%= time_ago_in_words(q.updated_at) %> </div>
+                <% else %>  
+                <div class="card-footer rounded-0"> Created <%= time_ago_in_words(q.updated_at) %> </div>
+            <% end %>
+        </div>
+    
+<% end %>
