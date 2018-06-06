@@ -23,6 +23,11 @@
 <% @question.answers.each do |answer|%>
     <div class='m-2 p-3', style='background-color: rgb(207, 219, 213);'>
       <%=%>
+
+        <% if answer.valid_answer %>
+          <div class="p-2 mb-2 bg-success text-white">Chosen by Interviewer</div>
+        <% end %>
+
         <strong><%= answer.user %></strong>
         <p><%= answer.text%></p>
 
