@@ -4,7 +4,8 @@
 </p>
 
 <p>
-  <%= @question.body %>
+  <strong>Body:</strong>
+  <%= markdown(@question.body) %>
 </p>
 
 
