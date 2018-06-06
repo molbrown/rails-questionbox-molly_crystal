@@ -29,13 +29,28 @@
 
 <% @question.answers.each do |answer|%>
     <div class='m-2 p-3', style='background-color: rgb(207, 219, 213);'>
+      <%=%>
+
+        <% if answer.valid_answer %>
+          <div class="p-2 mb-2 bg-success text-white">Chosen by Interviewer</div>
+        <% end %>
 
         <strong><%= answer.user %></strong>
         <p><%= answer.text%></p>
+
+        <% if !answer.valid_answer && current_user && current_user.id == @question.user_id %>
+          <%= form_for(answer) do |a| %>
+            <%= a.check_box(:valid_answer, value: true) %>
+            <%= a.label(:valid_answer, "Mark Answer as Valid") %>
+            <button class='btn btn-dark btn-sm' type="submit">Save</button>
+          <% end %>
+        <% end %>
+
+
         <% if current_user && current_user.id == answer.user_id %>
-        <%= link_to 'Edit', edit_answer_path(question_id: @question.id), class:'btn btn-outline-dark btn-sm'%> |
-        <%= link_to 'Delete', answer_path(answer),
-               method: :delete, class:'btn btn-outline-dark btn-sm' %>
+          <%= link_to 'Edit', edit_answer_path(question_id: @question.id), class:'btn btn-outline-dark btn-sm'%> |
+          <%= link_to 'Delete', answer_path(answer),
+                method: :delete, class:'btn btn-outline-dark btn-sm' %>
         <% end %>
 </p>
     </div>
