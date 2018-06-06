@@ -10,8 +10,7 @@ class QuestionMailer < ApplicationMailer
     @user = @question.user
 
     @greeting = "Hi #{@user.username}!" 
-   
-    @here = url_for 'here.', question_url(@question.id, host: 'localhost:3000')
+    @qurl = question_url(@question.id, host: 'localhost:3000')
     
     mail(
         to: @user.email,
