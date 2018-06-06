@@ -13,7 +13,7 @@ class QuestionMailer < ApplicationMailer
     @qurl = question_url(@question.id, host: 'localhost:3000')
     
     mail(
-        to: @user.email,
+        to: @user.email_address,
         from: "admin@codeinterview.com",
         subject: "You've Got Answers"
       )
