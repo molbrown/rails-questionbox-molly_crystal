@@ -36,15 +36,6 @@ class AnswersController < ApplicationController
         end
     end
 
-    # def valid_a
-    #     @check_answer = Answer.find(params[:id])
-    #     if @check_answer.save
-    #         redirect_to question_path(@check_answer.question_id)
-    #     else
-    #         render question_path(@check_answer.question_id)
-    #     end
-    # end
-
     def destroy
         @answer = Answer.find(params[:id])
         @id = @answer.question_id
