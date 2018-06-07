@@ -120,3 +120,81 @@ Question.create!(
     as 123 + 1 = 124.',
     user_id: 1
     )
+
+Question.create!(
+    title: 'Ruby',
+    body: 'Please explain in as much detail as possible, the difference between a class and a module.',
+    user_id: 1
+    )
+    
+Question.create!(
+    title: 'Objects',
+    body: 'Explain what an object is when dealing with OOP. Provide some examples of objects to illustrate your point.',
+    user_id: 1
+    )
+
+Question.create!(
+    title: 'Getting and Setting in Ruby',
+    body: 'How would you create getter and setter methods in Ruby?',
+    user_id: 1
+    )
+
+Question.create!(
+    title: 'Ruby Variables',
+    body: 'Describe the difference between class and instance variables. How are each used in an application?',
+    user_id: 1
+    )
+
+Question.create!(
+    title: 'Self in Rails',
+    body: 'What does *self* mean? How is this used?',
+    user_id: 1
+    )
+
+Question.create!(
+    title: 'What does Object Oriented Really Mean?',
+    body: 'Explain how *(almost)* everything is an object in Ruby.',
+    user_id: 1
+    )
+
+Question.create!(
+    title: 'Ruby Tools',
+    body: 'Explain the difference between a Proc and a Lambda',
+    user_id: 1
+    )  
+    
+Question.create!(
+    title: 'Ruby Add-ons',
+    body: 'What are Ruby gems? How do they work? Please give some examples of your favorite gems to use and what they do.',
+    user_id: 1
+    )    
+
+Question.create!(
+    title: 'Pipeline',
+    body: 'Explain the Assest Pipeline in as much detail as possible.',
+    user_id: 1
+    )    
+
+Question.create!(
+    title: 'REST',
+    body: 'Explain the concept of REST. Provide an example of RESTful routing and controller.',
+    user_id: 1
+    ) 
+
+Question.create!(
+    title: 'JS typeof bar',
+    body: 'What is a potential pitfall with using ```typeof bar === "object"``` to determine if ```bar``` is an object? How can this pitfall be avoided?',
+    user_id: 1
+    ) 
+
+Question.create!(
+    title: 'Blocks in JS',
+    body: 'What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block?',
+    user_id: 1 
+)
+
+Question.create!(
+    title: 'Strict in Javascript',
+    body: 'What is the significance, and what are the benefits, of including ```use strict``` at the beginning of a JavaScript source file?',
+    user_id: 1 
+)
