@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @questions = @user.questions.all.page params[:page]
+        @answers = @user.answers.all.page params[:page]
     end
 
     private
