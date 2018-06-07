@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+    skip_before_action :verify_authentication, only: [:show]
+
     def show
         @answer = Answer.find(params[:id])
     end
