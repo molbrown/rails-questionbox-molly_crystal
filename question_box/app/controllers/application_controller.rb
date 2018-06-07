@@ -25,12 +25,14 @@ class ApplicationController < ActionController::Base
     end
     
     def verify_authentication
-        user = authenticate_with_http_token do |token, options|
-            User.find_by(api_token: token)
-        end
+        if User.find_by(api_token: bearer_token)
+            user = authenticate_with_http_token do |token, options|
+                User.find_by(api_token: token)
+            end
         
-        unless user
-            render json: { error: "You do not have permission to access these resources" }, status: :unauthorized
+            unless user
+                render json: { error: "You do not have permission to access these resources" }, status: :unauthorized
+            end
         end
     end
 

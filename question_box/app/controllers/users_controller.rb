@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :verify_authentication, only: [:new, :create, :show]
 
     def new
         @user = User.new
