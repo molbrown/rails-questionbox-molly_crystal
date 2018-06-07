@@ -12,10 +12,6 @@ class UsersController < ApplicationController
             redirect_to new_user_path, alert: "Please enter a username and password."
         end
     end
-
-    def index 
-        @myquestions = current_user.questions.all.page params[:page]
-    end
     
     def show
         @user = User.find(params[:id])
