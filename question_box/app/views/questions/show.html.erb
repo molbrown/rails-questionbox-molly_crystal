@@ -4,12 +4,12 @@
 </p>
 
 <p>
-  <strong>Body:</strong>
   <%= markdown(@question.body) %>
 </p>
 
 <div>
-  <h4>Asked by <%= @question.user %></h4>
+  <h5>Asked by <%= link_to @question.user, user_path(@question.user) %></h5>
+
  <%= image_tag @question.user.image, class:'img-thumbnail' if @question.user.image.attached?%>
 </div>
 

@@ -10,6 +10,7 @@ tmp/*
 log/
 *.log
 .byebug_history
+storage/Us/
 
 # Icon must end with two \r
 Icon
