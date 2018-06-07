@@ -16,6 +16,7 @@ class AnswersController < ApplicationController
     def create
         @answer = Answer.new(answer_params)
         if @answer.save
+            AnswerMailer.new_answer(@answer.question).deliver_now
             redirect_to question_path(@answer.question_id)
         else
             render 'new'
