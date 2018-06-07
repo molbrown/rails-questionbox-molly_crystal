@@ -39,11 +39,15 @@ class AnswersController < ApplicationController
     def update
         @answer = Answer.find(params[:id])
         if @answer.update_attributes(answer_params)
-            format.html {redirect_to question_path(@answer.question_id)}
-            format.json { render :show, status: :ok, location: @answer.question }
+            respond_to do |format|
+                format.html {redirect_to question_path(@answer.question_id)}
+                format.json { render :show, status: :ok, location: @answer.question }
+            end
         else
-            format.html { render :edit }
-            format.json { render json: @question.errors, status: :unprocessable_entity }
+            respond_to do |format|
+                format.html { render :edit }
+                format.json { render json: @question.errors, status: :unprocessable_entity }
+            end
         end
     end
 
