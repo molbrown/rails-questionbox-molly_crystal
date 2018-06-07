@@ -11,6 +11,7 @@ log/
 *.log
 .byebug_history
 storage/Us/
+storage/wo/
 
 # Icon must end with two \r
 Icon
