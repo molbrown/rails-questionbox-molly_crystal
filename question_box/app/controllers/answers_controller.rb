@@ -19,11 +19,15 @@ class AnswersController < ApplicationController
         @answer = Answer.new(answer_params)
         if @answer.save
             AnswerMailer.new_answer(@answer.question).deliver_now
-            format.html {redirect_to question_path(@answer.question_id)}
-            format.json { render :show, status: :created, location: @answer.question }
+            respond_to do |format|
+                format.html {redirect_to question_path(@answer.question_id)}
+                format.json { render :show, status: :created, location: @answer.question }
+            end
         else
-            format.html { render :new }
-            format.json { render json: @answer.errors, status: :unprocessable_entity }
+            respond_to do |format|
+                format.html { render :new }
+                format.json { render json: @answer.errors, status: :unprocessable_entity }
+            end
         end
     end
 
@@ -47,9 +51,10 @@ class AnswersController < ApplicationController
         @answer = Answer.find(params[:id])
         @id = @answer.question_id
         if current_user.id == @answer.user_id
-        respond_to do |format|
-            format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
-            format.json { head :no_content }
+            respond_to do |format|
+                format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
+                format.json { head :no_content }
+            end
         end
     end
 
