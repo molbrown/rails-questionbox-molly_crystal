@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     get 'logout', to: 'logins#destroy', as: 'logout'
   root 'questions#index'
 
-  namespace :api do
-    namespace :v1 do
+  scope :api do
+    scope :v1 do
       resources :users, format: "json"
       resources :questions, format: "json"
       resources :answers, format: "json"
