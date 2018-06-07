@@ -17,9 +17,11 @@ class AnswersController < ApplicationController
         @answer = Answer.new(answer_params)
         if @answer.save
             AnswerMailer.new_answer(@answer.question).deliver_now
-            redirect_to question_path(@answer.question_id)
+            format.html {redirect_to question_path(@answer.question_id)}
+            format.json { render :show, status: :created, location: @answer.question }
         else
-            render 'new'
+            format.html { render :new }
+            format.json { render json: @answer.errors, status: :unprocessable_entity }
         end
     end
 
@@ -31,9 +33,11 @@ class AnswersController < ApplicationController
     def update
         @answer = Answer.find(params[:id])
         if @answer.update_attributes(answer_params)
-            redirect_to question_path(@answer.question_id)
+            format.html {redirect_to question_path(@answer.question_id)}
+            format.json { render :show, status: :ok, location: @answer.question }
         else
-            render 'new'
+            format.html { render :edit }
+            format.json { render json: @question.errors, status: :unprocessable_entity }
         end
     end
 
@@ -41,10 +45,9 @@ class AnswersController < ApplicationController
         @answer = Answer.find(params[:id])
         @id = @answer.question_id
         if current_user.id == @answer.user_id
-            @answer.destroy
-            redirect_to question_path(@id)
-        else
-            redirect_to question_path(@id), alert: 'Only answer creator can delete.'
+        respond_to do |format|
+            format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
+            format.json { head :no_content }
         end
     end
 
