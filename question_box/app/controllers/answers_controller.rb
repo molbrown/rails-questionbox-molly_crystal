@@ -18,16 +18,17 @@ class AnswersController < ApplicationController
     def create
         @answer = Answer.new(answer_params)
         @answer.user_id = current_user.id
+        @question = Question.find(params[:question_id])
         if @answer.save
             AnswerMailer.new_answer(@answer.question).deliver_now
             respond_to do |format|
                 format.html {redirect_to question_path(@answer.question_id)}
-                format.json { render :show, status: :created, location: @answer.question }
+                format.json { render :show, status: 201, location: @answer.question }
             end
         else
             respond_to do |format|
                 format.html { render :new }
-                format.json { render json: @answer.errors, status: :unprocessable_entity }
+                format.json { render json: @answer.errors, status: 400 }
             end
         end
     end

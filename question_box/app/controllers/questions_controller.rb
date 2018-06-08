@@ -34,10 +34,10 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
+        format.json { render :show, status: 201, location: @question }
       else
         format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+        format.json { render json: @question.errors, status: 400 }
       end
     end
   end
@@ -52,7 +52,7 @@ class QuestionsController < ApplicationController
           format.json { render :show, status: :ok, location: @question }
         else
           format.html { render :edit }
-          format.json { render json: @question.errors, status: :unprocessable_entity }
+          format.json { render json: @question.errors, status: 400 }
         end
       else
         format.html { redirect_to @question, alert: 'Not authorized.'}
