@@ -27,7 +27,11 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.permit(:username, :password, :email_address, :image)
+        if request.xhr?
+            params.permit(:username, :password, :email_address)
+        else
+            params.require(:user).permit(:username, :password, :email_address, :image)
+        end
     end
 
 
