@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     include ActionController::MimeResponds
     before_action :verify_authentication, if: proc { request.xhr? }
     helper_method :current_user
+    protect_from_forgery with: :null_session
 
     def current_user    
         if session[:user_id]
