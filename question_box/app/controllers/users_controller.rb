@@ -8,13 +8,17 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        respond_to do |format|
         if @user.save
-            redirect_to new_login_path, notice: "Your username was created successfully. Please login."
+            format.html { redirect_to new_login_path, notice: "Your username was created successfully. Please login." }
+            format.json { render :show, status: :created, location: @user }
         else
-            redirect_to new_user_path, alert: "Please enter a username and password."
+            format.html { redirect_to new_user_path, alert: "Please enter a username and password." }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
         end
     end
-    
+
     def show
         @user = User.find(params[:id])
         @questions = @user.questions.all.page params[:page]
@@ -23,7 +27,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:username, :password, :email_address, :image)
+        params.permit(:username, :password, :email_address, :image)
     end
 
 
