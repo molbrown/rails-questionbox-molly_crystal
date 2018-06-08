@@ -5,4 +5,4 @@ class QuestionMailer < ApplicationMailer
   #
   #   en.question_mailer.answer.subject
   #
-
+end
