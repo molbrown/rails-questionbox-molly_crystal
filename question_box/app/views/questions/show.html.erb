@@ -48,7 +48,7 @@
 
 
         <% if current_user && ( current_user.admin || current_user.id == answer.user_id ) %>
-          <%= link_to 'Edit', edit_answer_path(question_id: @question.id), class:'btn btn-outline-dark btn-sm'%> |
+          <%= link_to 'Edit', edit_answer_path(answer), class:'btn btn-outline-dark btn-sm'%> |
           <%= link_to 'Delete', answer_path(answer),
                 method: :delete, class:'btn btn-outline-dark btn-sm' %>
         <% end %>
