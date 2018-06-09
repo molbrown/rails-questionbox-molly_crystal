@@ -6,7 +6,7 @@
     <%= form.hidden_field :question_id, value: @question.id %>
     <div class="form-group">
         <%= form.label :text %><br>
-        <%= form.text_area :text %>
+        <%= form.text_area :text, class: "form-control" %>
     </div>
     <button class='btn text-dark', style='background-color: rgb(245, 203, 92);' type="submit">Submit Answer</button>
  
