@@ -56,9 +56,10 @@ class AnswersController < ApplicationController
     def destroy
         @answer = Answer.find(params[:id])
         @id = @answer.question_id
-        if current_user.id == @answer.user_id
+        if current_user.admin || current_user.id == @answer.user_id
+            @answer.destroy
             respond_to do |format|
-                format.html { redirect_to questions_url, notice: 'Answer was successfully destroyed.' }
+                format.html { redirect_to question_path(@id), notice: 'Answer was successfully destroyed.' }
                 format.json { head :no_content }
             end
         end
