@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
         # @answer.user_id = current_user.id
         @question = Question.find_by(id: params[:answer][:question_id])
         if @answer.save
-            AnswerMailer.new_answer(@answer.question).deliver_now
+            # AnswerMailer.new_answer(@answer.question).deliver_now
             respond_to do |format|
                 format.html {redirect_to question_path(@question)}
                 format.json { render :show, status: 201, location: @answer.question }
