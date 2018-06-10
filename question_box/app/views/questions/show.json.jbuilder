@@ -22,8 +22,11 @@ json.data do
     json.id @question.id
     json.attributes do
         json.id @question.id
+        json.title @question.title
         json.body @question.body
         json.user_id @question.user_id
+        json.created @question.created_at
+        json.updated @question.updated_at
         json.answers @question.answers
     end
 end
