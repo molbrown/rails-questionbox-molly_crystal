@@ -17,8 +17,9 @@ class AnswersController < ApplicationController
 
     def create
         @answer = Answer.new(answer_params)
+        @answer.user_id = current_user.id
         # @answer.user_id = current_user.id
-        @question = Question.find_by(id: params[:answer][:question_id])
+        # @question = Question.find_by(id: params[:answer][:question_id])
         if @answer.save
             # AnswerMailer.new_answer(@answer.question).deliver_now
             respond_to do |format|
