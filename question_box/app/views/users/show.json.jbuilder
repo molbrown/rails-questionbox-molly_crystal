@@ -22,7 +22,16 @@ json.data do
             json.answers_per_page @answers.count
             json.total_pages @answers.page.total_pages
             json.next path_to_next_page @answers
-            json.answers @answers
+            json.answers @answers do |answer|
+                json.id answer.id
+                json.question_id answer.question_id
+                json.user_id answer.user_id
+                json.text answer.text
+                json.created_at answer.created_at
+                json.updated_at answer.updated_at
+                json.question_title Question.find_by(id: answer.question_id).title
+                json.question_body Question.find_by(id: answer.question_id).body
+            end
         
         end
     end
