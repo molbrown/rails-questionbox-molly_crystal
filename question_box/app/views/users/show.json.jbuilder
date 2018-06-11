@@ -23,6 +23,7 @@ json.data do
             json.total_pages @answers.page.total_pages
             json.next path_to_next_page @answers
             json.answers @answers
+        
         end
     end
 end
