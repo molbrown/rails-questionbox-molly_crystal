@@ -1,0 +1,25 @@
+<p class='font-italic', style='background-color: rgb(207, 219, 213); font-size: 1.5rem; padding: 20px;'>A forum for practicing code interview questions and code challenges. Share your questions and answers with the community.</p>
+<div class='container'>
+<h2>Questions</h2>
+
+<%= link_to 'New Question', new_question_path, class:'btn text-dark', style:'background-color: rgb(245, 203, 92);' %>
+
+<div class='my-3'><%= paginate @questions %></div>
+<% @questions.each do |q| %>
+        <div class='card my-3'>
+            <div class='card-body' style='background-color: rgba(207, 219, 213, 0.6);'>
+                <h5 class="card-title" style='font-size: 1.4rem;'><%= link_to q.title, question_path(q), class:'text-dark' %></h5>
+                <%= truncate( strip_tags( markdown(q.body) ), length: 75) %>
+                <%= link_to 'read more', question_path(q) %>
+                <p class='card-text'> Posted by <%= link_to q.user, user_path(q.user) %></p>
+                <p class='card-text mt-3'><%= pluralize(q.answers.count, "Answer") %></p>
+            </div>
+            <%# <% if q.updated_at %>
+                <%# <div class="card-footer" style='background-color: rgb(207, 219, 213);'> Updated <%= time_ago_in_words(q.updated_at) ago </div> 
+                <%# <% else %>  
+                <%# <div class="card-footer" style='background-color: rgb(207, 219, 213);'>Created <%= time_ago_in_words(q.updated_at) ago </div> 
+            <% end %> 
+        </div>
+    
+<% end %>
+</div>

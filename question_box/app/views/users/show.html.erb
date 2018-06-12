@@ -1,0 +1,40 @@
+<div class='container'>
+<h2><%= @user %>'s Profile</h2>
+<%= image_tag @user.image, style:'max-height: 300px;' if @user.image.attached? %>
+<div class='row'>
+<div class='col'>
+<h3><%= @user %>'s Questions:</h3>
+<div class='my-3'><%= paginate @questions %></div>
+<% @questions.each do |q| %>
+        <div class='card my-3'>
+            <div class='card-body' style='background-color: rgba(207, 219, 213, 0.6);'>
+                <h5 class="card-title" style='font-size: 1.4rem;'><%= link_to q.title, question_path(q), class:'text-dark' %></h5>
+                <%= truncate( strip_tags( markdown(q.body) ), length: 75) %>
+                <%= link_to 'read more', question_path(q) %>
+                <p class='card-text mt-3'><%= pluralize(q.answers.count, "Answer") %></p>
+            </div> 
+        </div>
+    
+<% end %>
+</div>
+<div class='col'>
+<h3><%= @user %>'s Answers:</h3>
+<div class='my-3'><%= paginate @answers %></div>
+<% @answers.each do |a| %>
+        <div class='card my-3'>
+            <div class='card-body' style='background-color: rgba(207, 219, 213, 0.6);'>
+                <% if a.valid_answer %>
+                    <div class="p-2 mb-2 bg-success text-white">Chosen by Interviewer</div>
+                <% end %>
+                <h5 class="card-title" style='font-size: 1.4rem;'>For Question: <%= link_to a.question.title, question_path(a.question), class:'text-dark' %></h5>
+                <p>Answer:</p>
+                <%= truncate( strip_tags( markdown(a.text) ), length: 75) %>
+                <%= link_to 'read more', question_path(a.question) %>
+
+            </div> 
+        </div>
+    
+<% end %>
+</div>
+</div>
+</div>
