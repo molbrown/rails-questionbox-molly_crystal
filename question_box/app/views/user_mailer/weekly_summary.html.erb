@@ -1,14 +1,14 @@
 <h1>Your code{interview} Report</h1>
 <p><%= @user %>'s activity this week:</p>
 <div>
-  <p>Your new questions:</p>
+  <p>You wrote <%= @questions.count %> questions:</p>
   <% @questions.each do |q| %>
     <%= q.title %>
     <%= q.body %>
   <% end %>
 </div>
 <div>
-  <p>Your new answers:</p>
+  <p>You wrote <%= @answers.count %> answers:</p>
   <% @answers.each do |a| %>
     <p>For question: <%= a.question.title %></p>
     <p>Your response: <%= a.text %></p>

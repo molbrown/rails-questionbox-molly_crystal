@@ -1,3 +1,14 @@
-User#weekly_summary
+Your code{interview} Report
+<%= @user %>'s activity this week:
 
-<%= @greeting %>, find me in app/views/user_mailer/weekly_summary.text.erb
+You wrote <%= @questions.count %> questions:
+  <% @questions.each do |q| %>
+    <%= q.title %>
+    <%= q.body %>
+  <% end %>
+
+You wrote <%= @answers.count %> answers:
+  <% @answers.each do |a| %>
+    For question: <%= a.question.title %>
+    Your response: <%= a.text %>
+  <% end %>
