@@ -36,7 +36,6 @@ gem 'delayed_job_active_record'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'faker'
 gem 'kaminari'
 gem 'redcarpet', '~> 3.0.0'
 gem 'bootstrap', '~> 4.1.1'
@@ -45,6 +44,15 @@ gem 'rack-cors', require: 'rack/cors'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
+
+  # RSpec & testing gems!
+  gem 'rspec-rails', '~> 3.7'
+  gem 'shoulda-matchers', '~> 3.1'
+
+  # For test data generation
+  gem "factory_bot_rails", "~> 4.0"
+  gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :development do
