@@ -4,9 +4,9 @@ RSpec.describe UserMailer, type: :mailer do
     describe 'weekly_summary' do
         let!(:myuser) { FactoryBot.create(:user) }
         let!(:newquestion) { FactoryBot.create(:question, user: myuser )}
-        let!(:oldquestion) { FactoryBot.create(:question, user: myuser, created_at: 2018-06-07)}
+        let!(:oldquestion) { FactoryBot.create(:question, user: myuser, updated_at: '2018-06-07')}
         let!(:newanswer) { FactoryBot.create(:answer, user: myuser, question: newquestion )}
-        let!(:oldanswer) { FactoryBot.create(:answer, user: myuser, question: oldquestion, created_at: 2018-06-07)}
+        let!(:oldanswer) { FactoryBot.create(:answer, user: myuser, question: oldquestion, updated_at: '2018-06-07')}
         let!(:mail) { described_class.weekly_summary(myuser).deliver_now }
     
         it 'renders the subject' do
@@ -28,11 +28,17 @@ RSpec.describe UserMailer, type: :mailer do
         it 'assigns @questions' do
             expect(mail.body.encoded)
                 .to match(newquestion.title)
+
+            expect(mail.body.encoded)
+                .not_to match(oldquestion.title)
         end
 
         it 'assigns @answers' do
             expect(mail.body.encoded)
                 .to match(newanswer.text)
+
+            expect(mail.body.encoded)
+                .not_to match(oldanswer.text)
         end
 
     end
